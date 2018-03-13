@@ -1,0 +1,207 @@
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [t]
+#+latex_header: \mode<beamer>{\usetheme{Frankfurt}}
+#+latex_header: \beamertemplatenavigationsymbolsempty
+#+MACRO: BEAMERMODE presentation
+#+MACRO: BEAMERSUBJECT RMRF
+#+BEAMER_FRAME_TITLE: 1
+#+OPTIONS:  h:2
+#+TITLE: Modelling the effects of domestication in Wheat through novel computer-vision techniques
+#+AUTHOR: Nathan Hughes
+
+
+#+BEGIN_LaTeX
+
+\addtobeamertemplate{block begin}{%
+  \setlength{\textwidth}{1.01\textwidth}%
+}{}
+
+\addtobeamertemplate{block alerted begin}{%
+  \setlength{\textwidth}{1.01\textwidth}%
+}{}
+
+\addtobeamertemplate{block example begin}{%
+  \setlength{\textwidth}{1.01\textwidth}%
+}{}
+
+
+\AtBeginSection[]
+  {
+    \ifnum \value{framenumber}>3
+      \begin{frame}<beamer>
+      \frametitle{Outline}
+      \tableofcontents[currentsection]
+      \end{frame}
+    \else
+    \fi
+  }
+
+\setbeamertemplate{caption}[numbered]
+\setbeamerfont{bibliography item}{size=\footnotesize}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+#+END_LaTeX
+
+* Description of Topic
+
+** What is the project?
+The project is aiming to use computational methods to answer biologically significant
+ questions on wheat grain morphology and domestication using \textmu{CT} images.
+
+\vspace{1cm}
+
+To do this, I will be using:
+
+- Computer vision on 3D image sets
+- Statistical analysis and data science
+- Scientific theory to create reproducible results
+
+
+
+** Research Question:
+*** Is it possible to use \textmu{CT} imaging to answer questions about Wheat domestication?
+/I hope so!/
+*** Null-Hypothesis
+- $H_0=$ Domestication has no effect on the morphometric properties of wheat
+- $H_0=$ Ploidy has no effect on the morphometric properties of wheat
+- $H_0=$ There is no difference in hulled and non-hulled genotypes
+
+/*Hulling is a trait associated with domestication/
+
+
+* Materials and Image Capture Setup
+
+** Materials (Plant)
+*** Wheat information						      :BMCOL:
+   :PROPERTIES:
+   :BEAMER_col: 0.45
+   :END:
+
+I have a wide range of Wheat genotypes, these are:
+- Ranged between diploid, tetraploid and hexiploid
+- 12 total genotypes
+- Divided between domestication status
+
+*** Image							      :BMCOL:
+   :PROPERTIES:
+   :BEAMER_col: 0.3
+   :END:
+    #+ATTR_LATEX: :width 3cm
+    #+CAPTION: A Primitive Wheat Spike
+    [[./images/wheatspike.png]]
+
+** Methods (Image Generation)
+
+*** Capture Methods
+In order to generate this data  a \textmu{CT}100 scanner (ScancoMedical, Switzerland) was used
+Each spike was:
+- ~1000 slices (51 slices per stack),
+- 125 projections/180\textdegree{} were taken and a
+- binning of 6 was used.
+- Output images are a 0.2 megapixel (512 x 512) resolution (68.8 \textmu{}/pixel)
+
+
+
+* Completed Work
+** Data Gathering
+*** MATLAB Software
+Data has been extracted from the \textmu{CT} images using a method I previously developed at
+IBERS cite:Hughes2017. A lot of additions and novel augmentations have been added in order to work
+with the range of Wheat genotypes.
+
+\vspace{0.5cm}
+
+- This is done via separating non-grain from grain ROIs in the image data
+- Measurements are taken on a per grain level
+- Measurements are in mm, mm^2 and mm^3 based on type
+- Data is exported as CSV files
+
+** Improved Watershedding Algorithm
+
+*** Algorithm
+#+NAME: eqn:qe
+\begin{equation}
+\left | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right |,\textup{otherwise}
+\end{equation}
+
+
+*** Visual Example
+#+CAPTION: /A/ showing the chessboard method, /B/ improved quasi-euclidean method
+#+ATTR_LATEX: :width 7cm
+#+NAME: fig:qe
+[[./images/quasi.png]]
+
+
+* Work in Progress
+
+** Data Analysis /WIP/
+
+*** Statistical Methods to be implemented
+These will be implemented in Python using the library /SciPy/ cite:jones2014scipy
+**** Statistical Tests1						      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :END:
+- ANOVA
+- MANOVA
+- GLMs
+
+**** Statistical Tests2						      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :END:
+- $\chi^2$ Tests
+- PCA
+- T/F-Tests
+
+
+*** Graphing Methods to be implemented
+All Graphing is being implemented using Matplotlib cite:Hunter:2007
+**** Graphing1							      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :END:
+- Box
+- Swarm
+- Scatter / LM
+
+**** Graphing2							      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :END:
+- Violin
+- Correlation Maps
+- Frequency/Histograms
+
+
+
+** Reproducible Analysis GUI /WIP/
+
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 11.5cm
+#+CAPTION: GUI Showing Dynamic Graphing
+[[./images/gui.png]]
+#+END_CENTER
+
+
+* Additional Aims
+
+
+** Additional Aims
+*** Not yet started, but would like to implement by end of project
+- Automate error finding and identification
+- Visually Display Errors in Data
+- Write testing suite for software
+
+*** Ideas for future work
+- Test software library on other datasets
+- Grow more plants and create more replicates for more robust study
+
+
+* References
+** /References/
+bibliography:projectdemo.bib
+bibliographystyle:unsrt
