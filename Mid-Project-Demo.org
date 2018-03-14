@@ -1,11 +1,11 @@
 #+LaTeX_CLASS: beamer
-#+LaTeX_CLASS_OPTIONS: [t]
+#+LaTeX_CLASS_OPTIONS: [t, aspectratio=169, 10pt]
 #+latex_header: \mode<beamer>{\usetheme{Frankfurt}}
 #+latex_header: \beamertemplatenavigationsymbolsempty
 #+MACRO: BEAMERMODE presentation
 #+MACRO: BEAMERSUBJECT RMRF
 #+BEAMER_FRAME_TITLE: 1
-#+OPTIONS:  h:2
+#+OPTIONS:  h:2 ^:nil
 #+TITLE: Modelling the effects of domestication in Wheat through novel computer-vision techniques
 #+AUTHOR: Nathan Hughes
 
@@ -13,15 +13,15 @@
 #+BEGIN_LaTeX
 
 \addtobeamertemplate{block begin}{%
-  \setlength{\textwidth}{1.01\textwidth}%
+  \setlength{\textwidth}{1.0\textwidth}%
 }{}
 
 \addtobeamertemplate{block alerted begin}{%
-  \setlength{\textwidth}{1.01\textwidth}%
+  \setlength{\textwidth}{1.0\textwidth}%
 }{}
 
 \addtobeamertemplate{block example begin}{%
-  \setlength{\textwidth}{1.01\textwidth}%
+  \setlength{\textwidth}{1.0\textwidth}%
 }{}
 
 
@@ -178,12 +178,39 @@ All Graphing is being implemented using Matplotlib cite:Hunter:2007
 
 
 
-** Reproducible Analysis GUI /WIP/
-
+** Reproducible Analysis GUI - 1 /WIP/
 #+BEGIN_CENTER
 #+ATTR_LATEX: :width 11.5cm
-#+CAPTION: GUI Showing Dynamic Graphing
-[[./images/gui.png]]
+#+CAPTION: Inital GUI
+[[./images/gui1.png]]
+#+END_CENTER
+
+** Reproducible Analysis GUI - 2 /WIP/
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 11.5cm
+#+CAPTION: GUI select folders to search for data
+[[./images/gui2.png]]
+#+END_CENTER
+
+** Reproducible Analysis GUI - 3 /WIP/
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 11.5cm
+#+CAPTION: GUI with data loaded sucessfully
+[[./images/gui3.png]]
+#+END_CENTER
+
+** Reproducible Analysis GUI - 4 /WIP/
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 11.5cm
+#+CAPTION: GUI dynamically graphing crease_depth
+[[./images/gui4.png]]
+#+END_CENTER
+
+** Reproducible Analysis GUI - 5 /WIP/
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 11.5cm
+#+CAPTION: GUI dynamically graphing crease_volume
+[[./images/gui5.png]]
 #+END_CENTER
 
 
