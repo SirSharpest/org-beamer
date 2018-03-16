@@ -48,10 +48,12 @@
 * Description of Topic
 
 ** What is the project?
+
+*** Description
 The project is aiming to use computational methods to answer biologically significant
  questions on wheat grain morphology and domestication using \textmu{CT} images.
 
-\vspace{1cm}
+*** How?
 
 To do this, I will be using:
 
@@ -65,6 +67,7 @@ To do this, I will be using:
 *** Is it possible to use \textmu{CT} imaging to answer questions about Wheat domestication?
 /I hope so!/
 *** Null-Hypothesis
+#+ATTR_BEAMER: :overlay <+->
 - $H_0=$ Domestication has no effect on the morphometric properties of wheat
 - $H_0=$ Ploidy has no effect on the morphometric properties of wheat
 - $H_0=$ There is no difference in hulled and non-hulled genotypes
@@ -72,11 +75,53 @@ To do this, I will be using:
 /*Hulling is a trait associated with domestication/
 
 
+** Extracted Features
+
+*** Features List						      :BMCOL:
+   :PROPERTIES:
+   :BEAMER_env: block
+   :BEAMER_col: 0.45
+   :END:
+
+The features I am collecting are:
+
+#+ATTR_BEAMER: :overlay <+->
+- Length
+- Width
+- Depth
+- Volume
+- Surface Area
+- Crease Depth
+- Crease Volume
+- X,Y,Z coordinates of grains
+
+*** Image							      :BMCOL:
+   :PROPERTIES:
+   :BEAMER_col: 0.3
+   :END:
+    #+ATTR_LATEX: :width 2.6cm
+    #+CAPTION: Major features extracted from analysis
+    [[./images/grains.png]]
+
+
+
+** Aims
+
+*** Primary Aims
+
+I am wanting to produce:
+
+#+ATTR_BEAMER: :overlay <+->
+- A software library (in Python) which can be used to help analysis of \textmu{CT} scanned seeds
+- A GUI application for researchers to use to auto analyse seeds
+- Answers to my hypothesis
+
 * Materials and Image Capture Setup
 
 ** Materials (Plant)
 *** Wheat information						      :BMCOL:
    :PROPERTIES:
+   :BEAMER_env: block
    :BEAMER_col: 0.45
    :END:
 
@@ -134,6 +179,36 @@ with the range of Wheat genotypes.
 #+NAME: fig:qe
 [[./images/quasi.png]]
 
+
+** Grain Analyser Library example output - 1
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 9cm
+#+CAPTION: Statistical Python Library Boxplot output
+[[./images/boxplots.png]]
+#+END_CENTER
+
+** Grain Analyser Library example output - 2
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 9cm
+#+CAPTION: Statistical Python Library Boxplot output  style 2
+[[./images/boxplots2.png]]
+#+END_CENTER
+
+
+
+** Grain Analyser Library example output - 3
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 12cm
+#+CAPTION: Statistical Python Library PCA output
+[[./images/pca.png]]
+#+END_CENTER
+
+** Grain Analyser Library example output - 4
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 12cm
+#+CAPTION: Statistical Python Library PCA output
+[[./images/pca2.png]]
+#+END_CENTER
 
 * Work in Progress
 
@@ -212,6 +287,10 @@ All Graphing is being implemented using Matplotlib cite:Hunter:2007
 #+CAPTION: GUI dynamically graphing crease_volume
 [[./images/gui5.png]]
 #+END_CENTER
+
+
+
+
 
 
 * Additional Aims
