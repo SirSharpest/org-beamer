@@ -1,6 +1,7 @@
 #+LaTeX_CLASS: beamer
 #+LaTeX_CLASS_OPTIONS: [t, aspectratio=169, 10pt]
-#+latex_header: \mode<beamer>{\usetheme{Frankfurt}}
+#+latex_header: \mode<beamer>{\usetheme{Singapore} \usecolortheme{orchid}}
+#+latex_header:  \usepackage{natbib}
 #+latex_header: \beamertemplatenavigationsymbolsempty
 #+MACRO: BEAMERMODE presentation
 #+MACRO: BEAMERSUBJECT RMRF
@@ -11,7 +12,6 @@
 
 
 #+BEGIN_LaTeX
-
 \addtobeamertemplate{block begin}{%
   \setlength{\textwidth}{1.0\textwidth}%
 }{}
@@ -50,8 +50,10 @@
 ** What is the project?
 
 *** Description
+
 The project is aiming to use computational methods to answer biologically significant
  questions on wheat grain morphology and domestication using \textmu{CT} images.
+
 
 *** How?
 
@@ -62,12 +64,10 @@ To do this, I will be using:
 - Scientific theory to create reproducible results
 
 
-
 ** Research Question:
 *** Is it possible to use \textmu{CT} imaging to answer questions about Wheat domestication?
 /I hope so!/
 *** Null-Hypothesis
-#+ATTR_BEAMER: :overlay <+->
 - $H_0=$ Domestication has no effect on the morphometric properties of wheat
 - $H_0=$ Ploidy has no effect on the morphometric properties of wheat
 - $H_0=$ There is no difference in hulled and non-hulled genotypes
@@ -85,7 +85,6 @@ To do this, I will be using:
 
 The features I am collecting are:
 
-#+ATTR_BEAMER: :overlay <+->
 - Length
 - Width
 - Depth
@@ -111,7 +110,6 @@ The features I am collecting are:
 
 I am wanting to produce:
 
-#+ATTR_BEAMER: :overlay <+->
 - A software library (in Python) which can be used to help analysis of \textmu{CT} scanned seeds
 - A GUI application for researchers to use to auto analyse seeds
 - Answers to my hypothesis
@@ -134,8 +132,8 @@ I have a wide range of Wheat genotypes, these are:
    :PROPERTIES:
    :BEAMER_col: 0.3
    :END:
-    #+ATTR_LATEX: :width 3cm
-    #+CAPTION: A Primitive Wheat Spike
+    #+ATTR_LATEX: :width 4cm
+    #+CAPTION: Two wheat spikes, showing diversity in Population
     [[./images/wheatspike.png]]
 
 ** Methods (Image Generation)
@@ -154,7 +152,7 @@ Each spike was:
 ** Data Gathering
 *** MATLAB Software
 Data has been extracted from the \textmu{CT} images using a method I previously developed at
-IBERS cite:Hughes2017. A lot of additions and novel augmentations have been added in order to work
+IBERS [cite:Hughes2017]. A lot of additions and novel augmentations have been added in order to work
 with the range of Wheat genotypes.
 
 \vspace{0.5cm}
@@ -164,18 +162,41 @@ with the range of Wheat genotypes.
 - Measurements are in mm, mm^2 and mm^3 based on type
 - Data is exported as CSV files
 
+** Example Data
+
+*** Image Analysis Output (Data Truncated for Presentation)
+Each 3D image scan results in an individual CSV file, the contents
+ of which is similar to the example below, where each row is an individual grain:
+
+#+attr_latex: :environment longtable :align l|llllllll
+#+NAME: tab:data
+|   | scanid | length | width | depth | crease_depth | circularity | surface_area |  volume |
+|---+--------+--------+-------+-------+--------------+-------------+--------------+---------|
+| 0 | C02871 |   4.47 |  3.74 | 3.693 |         0.65 |      0.8283 |         56.1 | 31.7688 |
+| 1 |        |   5.29 |  3.80 | 3.106 |          0.3 |       0.923 |         53.7 |  31.059 |
+| 2 |        |   4.05 |  4.49 | 3.728 |         0.59 |       0.848 |       57.722 |  32.978 |
+| 3 |        |   4.05 |  4.03 | 2.725 |         0.79 |       0.779 |         49.0 |   25.41 |
+| 4 |        |   3.99 |  3.84 |   3.5 |        0.616 |       0.785 |        54.67 |   30.99 |
+| 5 |        |    4.8 |  3.86 |   3.1 |        0.482 |       0.913 |         50.4 |  28.288 |
+| 6 |        |    3.7 |  3.82 |   2.9 |         0.75 |       0.816 |        47.30 |   24.16 |
+| 7 |        |   3.99 |  4.46 | 3.584 |        0.638 |        0.85 |         53.7 |   30.88 |
+
+
+
+
+
 ** Improved Watershedding Algorithm
 
-*** Algorithm
+*** Algorithm for /Quasi-Euclidean/ Distance
 #+NAME: eqn:qe
 \begin{equation}
-\left | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right |,\textup{otherwise}
+\left  | x_1 - x_2 \right | + (\sqrt{2}-1), \left | x_1 - x_2 \right | >\left | y_1 - y_2 \right | (\sqrt{2}-1) \left | x_1 - x_2 \right |,\textup{otherwise}
 \end{equation}
 
 
 *** Visual Example
 #+CAPTION: /A/ showing the chessboard method, /B/ improved quasi-euclidean method
-#+ATTR_LATEX: :width 7cm
+#+ATTR_LATEX: :width 6cm
 #+NAME: fig:qe
 [[./images/quasi.png]]
 
@@ -195,15 +216,7 @@ with the range of Wheat genotypes.
 #+END_CENTER
 
 
-
 ** Grain Analyser Library example output - 3
-#+BEGIN_CENTER
-#+ATTR_LATEX: :width 12cm
-#+CAPTION: Statistical Python Library PCA output
-[[./images/pca.png]]
-#+END_CENTER
-
-** Grain Analyser Library example output - 4
 #+BEGIN_CENTER
 #+ATTR_LATEX: :width 12cm
 #+CAPTION: Statistical Python Library PCA output
@@ -215,7 +228,7 @@ with the range of Wheat genotypes.
 ** Data Analysis /WIP/
 
 *** Statistical Methods to be implemented
-These will be implemented in Python using the library /SciPy/ cite:jones2014scipy
+These will be implemented in Python using the library /SciPy/ [cite:jones2014scipy]
 **** Statistical Tests1						      :BMCOL:
     :PROPERTIES:
     :BEAMER_col: 0.45
@@ -234,7 +247,7 @@ These will be implemented in Python using the library /SciPy/ cite:jones2014scip
 
 
 *** Graphing Methods to be implemented
-All Graphing is being implemented using Matplotlib cite:Hunter:2007
+All Graphing is being implemented using Matplotlib [cite:Hunter:2007]
 **** Graphing1							      :BMCOL:
     :PROPERTIES:
     :BEAMER_col: 0.45
@@ -306,8 +319,14 @@ All Graphing is being implemented using Matplotlib cite:Hunter:2007
 - Test software library on other datasets
 - Grow more plants and create more replicates for more robust study
 
+* Thanks
 
-* References
-** /References/
+** Thanks to
+
+*** All these people:
+| Dr. Wayne Aubrey  | Prof. John Doonan    |
+| Dr. Candida Nibau | Dr. Kevin Williams   |
+| Dr. Kim Kenobi    | Everyone at the NPPC |
+*** References
 bibliography:projectdemo.bib
-bibliographystyle:unsrt
+bibliographystyle:vancouver-authoryear
