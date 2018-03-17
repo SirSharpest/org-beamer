@@ -120,7 +120,7 @@ I am wanting to produce:
 *** Wheat information						      :BMCOL:
    :PROPERTIES:
    :BEAMER_env: block
-   :BEAMER_col: 0.45
+   :BEAMER_col: 0.3
    :END:
 
 I have a wide range of Wheat genotypes, these are:
@@ -130,10 +130,10 @@ I have a wide range of Wheat genotypes, these are:
 
 *** Image							      :BMCOL:
    :PROPERTIES:
-   :BEAMER_col: 0.3
+   :BEAMER_col: 0.6
    :END:
     #+ATTR_LATEX: :width 4cm
-    #+CAPTION: Two wheat spikes, showing diversity in Population
+    #+CAPTION: Two wheat spikes, showing diversity in Population, Compactum (6N) left, Durum right (4N)
     [[./images/wheatspike.png]]
 
 ** Methods (Image Generation)
@@ -324,6 +324,8 @@ All Graphing is being implemented using Matplotlib [cite:Hunter:2007]
 ** Thanks to
 
 *** All these people:
+#+attr_latex: :environment longtable :align ll :width 10cm
+#+NAME: tab:thanks
 | Dr. Wayne Aubrey  | Prof. John Doonan    |
 | Dr. Candida Nibau | Dr. Kevin Williams   |
 | Dr. Kim Kenobi    | Everyone at the NPPC |
