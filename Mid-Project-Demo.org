@@ -1,17 +1,17 @@
 #+LaTeX_CLASS: beamer
 #+LaTeX_CLASS_OPTIONS: [t, aspectratio=169, 10pt]
-#+latex_header: \mode<beamer>{\usetheme{Singapore} \usecolortheme{orchid}}
+#+BEAMER_THEME: Rochester [height=20pt]
 #+latex_header:  \usepackage{natbib}
 #+latex_header: \beamertemplatenavigationsymbolsempty
-#+MACRO: BEAMERMODE presentation
-#+MACRO: BEAMERSUBJECT RMRF
-#+BEAMER_FRAME_TITLE: 1
-#+OPTIONS:  h:2 ^:nil
+#+latex_header: \BeforeBeginEnvironment{frame}{\subsection{}}
+#+OPTIONS:  H:2 ^:nil
+
+
+
 #+TITLE: Modelling the effects of domestication in Wheat through novel computer-vision techniques
 #+AUTHOR: Nathan Hughes
 
-
-#+BEGIN_LaTeX
+#+BEGIN_EXPORT latex
 \addtobeamertemplate{block begin}{%
   \setlength{\textwidth}{1.0\textwidth}%
 }{}
@@ -43,7 +43,8 @@
 \setbeamerfont{bibliography entry location}{size=\footnotesize}
 \setbeamerfont{bibliography entry note}{size=\footnotesize}
 \setbeamertemplate{bibliography item}{\insertbiblabel}
-#+END_LaTeX
+#+END_EXPORT
+
 
 * Description of Topic
 
@@ -300,9 +301,6 @@ All Graphing is being implemented using Matplotlib [cite:Hunter:2007]
 #+CAPTION: GUI dynamically graphing crease_volume
 [[./images/gui5.png]]
 #+END_CENTER
-
-
-
 
 
 
